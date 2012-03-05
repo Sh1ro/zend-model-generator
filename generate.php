@@ -1,13 +1,8 @@
 <?php
-set_include_path(implode(PATH_SEPARATOR, array(
-    realpath(dirname(__FILE__) . '/../'),
-    get_include_path()
-)));
-
+require_once 'Db/Table/Parser.php';
 require_once 'Zend/Loader/Autoloader.php';
 
 $autoloader = Zend_Loader_Autoloader::getInstance();
-$autoloader->registerNamespace('GEN_');
 
 // Setup the CLI Commands
 try {
@@ -74,7 +69,7 @@ if (!isset($opts->limit)) {
     $limit = explode(' ', $opts->limit);
 }
 
-$parser = new GEN_Db_Table_Parser();
+$parser = new Db_Table_Parser();
 
 if (isset($opts->prefix)) {
     $parser->setPrefix($opts->prefix);

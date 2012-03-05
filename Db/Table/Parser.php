@@ -1,6 +1,6 @@
 <?php
 
-class GEN_Db_Table_Parser
+class Db_Table_Parser
 {
     private $_prefix = null;
 
