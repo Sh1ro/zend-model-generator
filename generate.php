@@ -157,7 +157,7 @@ foreach ($tables as $name)
 
             $info['methods'][] = new Zend_CodeGenerator_Php_Method(array(
                 'name' => sprintf('countBy%s', $parser->formatMethodName($key)),
-                'body' => sprintf('return $this->fetchRow($this->select()->from($this->_name, array(\'%s\', \'num\'=> \'COUNT(*)\'))->where(\'%s = ?\', $value))->num;', implode('","', $info['primary']), $key),
+                'body' => sprintf('return $this->fetchRow($this->select(Zend_Db_Table::SELECT_WITH_FROM_PART)->setIntegrityCheck(false)->columns(array(\'%s\', \'num\'=> \'COUNT(*)\'))->where(\'%s = ?\', $value))->num;', implode('","', $info['primary']), $key),
                 'parameters' => array(
                     array(
                         'name' => 'value'
